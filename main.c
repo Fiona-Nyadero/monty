@@ -24,16 +24,16 @@ int main(int argc, char *argv[]) {
 
     while (fgets(line, sizeof(line), file) != NULL) {
         line_number++;
-        line[strcspn(line, "\n")] = '\0'; /* Remove trailing newline*/
+        line[strcspn(line, "\n")] = '\0'; 
 
         if (parse_line(line, line_number) == EXIT_FAILURE) {
-            free_stack(); /* Free allocated memory */
+            free_stack();
             fclose(file);
             return EXIT_FAILURE;
         }
     }
 
-    free_stack(); /* Free allocated memory */
+    free_stack();
     fclose(file);
     return 0;
 }
