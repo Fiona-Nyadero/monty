@@ -46,7 +46,7 @@ int analyze_row(const char *line, unsigned int line_number)
         {
                 sub(&stack, line_number);
         }
-	else if (strcmp(opcode, "_divide") == 0 && args_number == 1)
+	else if (strcmp(opcode, "div") == 0 && args_number == 1)
         {
                 _divide(&stack, line_number);
         }
