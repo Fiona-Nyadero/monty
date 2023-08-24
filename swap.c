@@ -71,3 +71,23 @@ void _divide(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line_number);
 }
+/**
+  * _multiply - function that multiplies top stack element 2nd top stack element
+  *
+  * @stack: points to top stack
+  * @line_number: instruction appears here
+  */
+void _multiply(stack_t **stack, unsigned int line_number)
+{
+	stack_t *var;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	var = (*stack)->next;
+	var->n *= (*stack)->n;
+	pop(stack, line_number);
+}

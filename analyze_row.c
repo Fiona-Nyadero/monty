@@ -50,6 +50,10 @@ int analyze_row(const char *line, unsigned int line_number)
         {
                 _divide(&stack, line_number);
         }
+	else if (strcmp(opcode, "mul") == 0 && args_number == 1)
+        {
+                _multiply(&stack, line_number);
+	}
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
