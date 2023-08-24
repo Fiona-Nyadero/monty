@@ -29,6 +29,10 @@ else if (strcmp(opcode, "pop") == 0 && args_number == 1)
 {
 pop(&stack, line_number);
 }
+else if (strcmp(opcode, "swap") == 0 && args_number == 1)
+{
+swap(&stack, line_number);
+}
 else if (strcmp(opcode, "") != 0)
 {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
