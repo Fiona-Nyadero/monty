@@ -18,6 +18,10 @@ int analyze_row(const char *line, unsigned int line_number)
 	{
 		return (EXIT_SUCCESS);
 	}
+	while (*line == ' ')
+	{
+	line++;
+	}
 	if (*line == '#')
 	{
 		return (EXIT_SUCCESS);
