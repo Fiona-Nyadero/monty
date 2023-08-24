@@ -30,10 +30,10 @@ void swap(stack_t **stack, unsigned int line_number)
 	*stack = second;
 }
 /**
- * _sub - subtracts the top element from the second top element of the stack
+ * sub - this function subtracts top element from the 2nd top element on stack
  *
- * @stack: pointer to top of stack
- * @line_number: where instruction appears
+ * @stack: points top stack
+ * @line_number: instruction appears here
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
