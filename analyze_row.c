@@ -10,33 +10,38 @@
  */
 int analyze_row(const char *line, unsigned int line_number)
 {
-char opcode[10];
-int args;
-int args_number = sscanf(line, "%s %d", opcode, &args);
-if (strcmp(opcode, "push") == 0 && args_number == 2)
-{
-push(&stack, args, line_number);
-}
-else if (strcmp(opcode, "pall") == 0 && args_number == 1)
-{
-pall(&stack, line_number);
-}
-else if (strcmp(opcode, "pint") == 0 && args_number == 1)
-{
-pint(&stack, line_number);
-}
-else if (strcmp(opcode, "pop") == 0 && args_number == 1)
-{
-pop(&stack, line_number);
-}
-else if (strcmp(opcode, "swap") == 0 && args_number == 1)
-{
-swap(&stack, line_number);
-}
-else if (strcmp(opcode, "") != 0)
-{
-fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-return (EXIT_FAILURE);
-}
-return (EXIT_SUCCESS);
+	char opcode[10];
+	int args;
+	int args_number = sscanf(line, "%s %d", opcode, &args);
+
+	if (strcmp(opcode, "push") == 0 && args_number == 2)
+	{
+		push(&stack, args, line_number);
+	}
+	else if (strcmp(opcode, "pall") == 0 && args_number == 1)
+	{
+		pall(&stack, line_number);
+	}
+	else if (strcmp(opcode, "pint") == 0 && args_number == 1)
+	{
+		pint(&stack, line_number);
+	}
+	else if (strcmp(opcode, "pop") == 0 && args_number == 1)
+	{
+		pop(&stack, line_number);
+	}
+	else if (strcmp(opcode, "swap") == 0 && args_number == 1)
+	{
+		swap(&stack, line_number);
+	}
+	else if (strcmp(opcode, "add") == 0 && args_number == 1)
+	{
+		add(&stack, line_number);
+	}
+	else if (strcmp(opcode, "") != 0)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
