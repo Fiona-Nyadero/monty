@@ -38,6 +38,10 @@ int analyze_row(const char *line, unsigned int line_number)
 	{
 		add(&stack, line_number);
 	}
+	else if (strcmp(opcode, "nop") == 0 && args_number == 1)
+        {
+                nop(&stack, line_number);
+        }
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
