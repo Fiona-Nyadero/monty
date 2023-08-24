@@ -46,6 +46,10 @@ int analyze_row(const char *line, unsigned int line_number)
         {
                 sub(&stack, line_number);
         }
+	else if (strcmp(opcode, "_divide") == 0 && args_number == 1)
+        {
+                _divide(&stack, line_number);
+        }
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
@@ -53,3 +57,4 @@ int analyze_row(const char *line, unsigned int line_number)
 	}
 	return (EXIT_SUCCESS);
 }
+
