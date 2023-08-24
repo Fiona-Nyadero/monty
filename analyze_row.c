@@ -14,6 +14,14 @@ int analyze_row(const char *line, unsigned int line_number)
 	int args;
 	int args_number = sscanf(line, "%s %d", opcode, &args);
 
+	if (line == NULL || *line == '\0' || *line == '\n' || (*line == ' ' && *(line + 1) == '\n'))
+	{
+		return (EXIT_SUCCESS);
+	}
+	if (*line == '#')
+	{
+		return (EXIT_SUCCESS);
+	}
 	if (strcmp(opcode, "push") == 0 && args_number == 2)
 	{
 		push(&stack, args, line_number);
@@ -54,6 +62,10 @@ int analyze_row(const char *line, unsigned int line_number)
         {
                 _multiply(&stack, line_number);
 	}
+	else if (strcmp(opcode, "mod") == 0 && args_number == 1)
+        {
+		_modulo(&stack, line_number);
+	}
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
@@ -61,4 +73,3 @@ int analyze_row(const char *line, unsigned int line_number)
 	}
 	return (EXIT_SUCCESS);
 }
-

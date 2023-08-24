@@ -72,7 +72,8 @@ void _divide(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
-  * _multiply - function that multiplies top stack element 2nd top stack element
+  * _multiply - function that multiplies top stack element
+  * 2nd top stack element
   *
   * @stack: points to top stack
   * @line_number: instruction appears here
@@ -89,5 +90,32 @@ void _multiply(stack_t **stack, unsigned int line_number)
 	}
 	var = (*stack)->next;
 	var->n *= (*stack)->n;
+	pop(stack, line_number);
+}
+/**
+ * _modulo - this function computes the remainder after division
+ *
+ * @stack: points to top stack
+ * @line_number: instruction appears here
+ */
+void _modulo(stack_t **stack, unsigned int line_number)
+{
+	stack_t *var;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	var = (*stack)->next;
+	var->n %= (*stack)->n;
 	pop(stack, line_number);
 }
