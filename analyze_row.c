@@ -42,6 +42,10 @@ int analyze_row(const char *line, unsigned int line_number)
         {
                 nop(&stack, line_number);
         }
+	else if (strcmp(opcode, "sub") == 0 && args_number == 1)
+        {
+                sub(&stack, line_number);
+        }
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
