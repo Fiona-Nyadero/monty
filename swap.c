@@ -55,20 +55,19 @@ void sub(stack_t **stack, unsigned int line_number)
   */
 void _divide(stack_t **stack, unsigned int line_number)
 {
-	stack_t *var = *stack;
-
-	if (!var || !var->next)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
-	if (var->n == 0)
+
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
-	var->next->n /= var->n;
+	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line_number);
 }
