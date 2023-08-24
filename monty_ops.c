@@ -8,26 +8,26 @@
 stack_t *stack = NULL;
 void push(stack_t **stack, int value, unsigned int line_number)
 {
-	stack_t *new_node;
+	stack_t *new_n;
 	(void)line_number;
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	new_n = malloc(sizeof(stack_t));
+	if (new_n == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = value;
-	new_node->prev = NULL;
-	new_node->next = *stack;
+	new_n->n = value;
+	new_n->prev = NULL;
+	new_n->next = *stack;
 
 	if (*stack != NULL)
 	{
-		(*stack)->prev = new_node;
+		(*stack)->prev = new_n;
 	}
-	*stack = new_node;
+	*stack = new_n;
 }
 /**
  * pall - This function prints values of stack.

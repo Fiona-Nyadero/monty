@@ -11,18 +11,18 @@
 
 int main(int argc, char *argv[])
 {
-	char line[100];
-	unsigned int line_number = 0;
-	FILE *file;
+	char row[100];
+	unsigned int row_num = 0;
+	FILE *f_desc;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
+	f_desc = fopen(argv[1], "r");
 
-	if (file == NULL)
+	if (f_desc == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
@@ -30,18 +30,18 @@ int main(int argc, char *argv[])
 
 	initialize_stack(&stack);
 
-	while (fgets(line, sizeof(line), file) != NULL)
+	while (fgets(row, sizeof(row), f_desc) != NULL)
 	{
-		line_number++;
-		line[strcspn(line, "\n")] = '\0';
-		if (parse_line(line, line_number) == EXIT_FAILURE)
+		row_num++;
+		row[strcspn(row, "\n")] = '\0';
+		if (analyze_row(row, row_num) == EXIT_FAILURE)
 		{
 			free_stack(&stack);
-			fclose(file);
+			fclose(f_desc);
 			return (EXIT_FAILURE);
 		}
 	}
 	free_stack(&stack);
-	fclose(file);
+	fclose(f_desc);
 	return (EXIT_SUCCESS);
 }
