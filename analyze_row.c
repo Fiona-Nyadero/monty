@@ -77,6 +77,14 @@ int analyze_row(const char *line, unsigned int line_number)
 	{
 		_rotl(&stack, line_number);
 	}
+	else if (strcmp(opcode, "pstr") == 0 && args_number == 1)
+	{
+                pstr(&stack, line_number);
+	}
+	else if (strcmp(opcode, "rotr") == 0 && args_number == 1)
+        {
+                rotr(&stack, line_number);
+        }
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
