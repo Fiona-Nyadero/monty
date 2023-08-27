@@ -70,6 +70,10 @@ int analyze_row(const char *line, unsigned int line_number)
         {
 		_modulo(&stack, line_number);
 	}
+	else if (strcmp(opcode, "pchar") == 0 && args_number == 1)
+        {
+                _pchar(&stack, line_number);
+        }
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);

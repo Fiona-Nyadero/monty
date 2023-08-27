@@ -38,4 +38,5 @@ void sub(stack_t **stack, unsigned int line_number);
 void _divide(stack_t **stack, unsigned int line_number);
 void _multiply(stack_t **stack, unsigned int line_number);
 void _modulo(stack_t **stack, unsigned int line_number);
+void _pchar(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */
