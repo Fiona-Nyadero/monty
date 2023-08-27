@@ -13,47 +13,70 @@ int analyze_row(const char *line, unsigned int line_number)
 	char opcode[10];
 	int args;
 	int args_number = sscanf(line, "%s %d", opcode, &args);
-
-	if (line == NULL || *line == '\0' || *line == '\n' ||
-			(*line == ' ' && *(line + 1) == '\n'))
-		return (EXIT_SUCCESS);
-	while (*line == ' ')
-		line++;
-	if (*line == '#' || *line == '\n' || *line == '\0')
-		return (EXIT_SUCCESS);
-	if (strcmp(opcode, "push") == 0)
+	if (line == NULL || *line == '\0' || *line == '\n' || (*line == ' ' && *(line + 1) == '\n'))
 	{
-		if (args_number != 1)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			return (EXIT_FAILURE);
-		}
+		return (EXIT_SUCCESS);
+	}
+	while (*line == ' ')
+	{
+	line++;
+	}
+	if (*line == '#')
+	{
+		return (EXIT_SUCCESS);
+	}
+	if (strcmp(opcode, "push") == 0 && args_number == 2)
+	{
 		push(&stack, args, line_number);
 	}
 	else if (strcmp(opcode, "pall") == 0 && args_number == 1)
+	{
 		pall(&stack, line_number);
+	}
 	else if (strcmp(opcode, "pint") == 0 && args_number == 1)
+	{
 		pint(&stack, line_number);
+	}
 	else if (strcmp(opcode, "pop") == 0 && args_number == 1)
+	{
 		pop(&stack, line_number);
+	}
 	else if (strcmp(opcode, "swap") == 0 && args_number == 1)
+	{
 		swap(&stack, line_number);
+	}
 	else if (strcmp(opcode, "add") == 0 && args_number == 1)
+	{
 		add(&stack, line_number);
+	}
 	else if (strcmp(opcode, "nop") == 0 && args_number == 1)
+	{
 		nop(&stack, line_number);
+	}
 	else if (strcmp(opcode, "sub") == 0 && args_number == 1)
+	{
 		sub(&stack, line_number);
+	}
 	else if (strcmp(opcode, "div") == 0 && args_number == 1)
+	{
 		_divide(&stack, line_number);
+	}
 	else if (strcmp(opcode, "mul") == 0 && args_number == 1)
+	{
 		_multiply(&stack, line_number);
+	}
 	else if (strcmp(opcode, "mod") == 0 && args_number == 1)
+	{
 		_modulo(&stack, line_number);
+	}
 	else if (strcmp(opcode, "pchar") == 0 && args_number == 1)
+	{
 		_pchar(&stack, line_number);
+	}
 	else if (strcmp(opcode, "rotl") == 0 && args_number == 1)
+	{
 		_rotl(&stack, line_number);
+	}
 	else if (strcmp(opcode, "") != 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
