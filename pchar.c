@@ -8,9 +8,10 @@
  */
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	int value = (*stack)->n;
+	stack_t *top = *stack;
+	int value = top->n;
 
-	if (*stack == NULL)
+	if (top == NULL)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		free_stack(stack);
