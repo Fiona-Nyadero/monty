@@ -13,7 +13,7 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		exit(EXIT_FAILURE);
+		return;
 
 	first = *stack;
 	second = first->next;
